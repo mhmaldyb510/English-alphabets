@@ -6,8 +6,15 @@ class AlphasView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    List<String> englishAlphas =
-        List.generate(26, (index) => String.fromCharCode(index + 65));
+    /// Create a list of English alphabets using ASCII code.
+    /// ASCII code of A is 65 and to get the next alphabet we add 1 until we reach Z (90).
+    /// create a list of english alphabets using `ascii code`
+    List<String> englishAlphas = List.generate(
+      26,
+      (index) => String.fromCharCode(
+        index + 65,
+      ),
+    );
 
     return Padding(
       padding: const EdgeInsets.all(16.0),
@@ -21,6 +28,8 @@ class AlphasView extends StatelessWidget {
         itemBuilder: (context, index) {
           return AlphaCard(
             alpha: englishAlphas[index],
+
+            /// Use primary colors list and `%` operator used to keep the index in the range of the primary colors list.
             color: Colors.primaries[index % Colors.primaries.length],
           );
         },
